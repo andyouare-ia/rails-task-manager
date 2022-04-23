@@ -3,6 +3,9 @@
 <% @tasks.each do |task| %>
   <div>
     <input type="checkbox" id="task" name="task" <% if task.completed %>checked<% end %>>
-    <label for="task"><%= link_to task.title, task_path(task) %></label>
+    <label for="task"><%= link_to task.title, task_path(task) %></label> &#8226;
+    <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, task_path(task), method: :delete, data: {confirm: "Are you sure?"} %>
   </div>
 <% end %>
+
+<p><%= link_to "+ Add a new task", "/tasks/new" %></p>
